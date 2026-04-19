@@ -14,6 +14,37 @@ sudo apt install ./ghosts.deb
 ghosts
 ```
 
+### macOS (Homebrew)
+
+```bash
+brew tap lvl23apps/tap
+brew install ghosts
+ghosts
+```
+
+Requires Python 3.9+ and a 256-colour terminal. [iTerm2](https://iterm2.com) or the built-in Terminal app on macOS 12+ both work. `tmux` is available via `brew install tmux` and recommended for the Ghost scene.
+
+### Windows
+
+Windows is supported via **WSL** (Windows Subsystem for Linux) or natively with `windows-curses`.
+
+**WSL (recommended):**
+```powershell
+# From PowerShell — install WSL if you haven't already
+wsl --install
+```
+Then inside the WSL terminal follow the APT instructions above.
+
+**Native (Windows Terminal + Python):**
+```powershell
+pip install windows-curses
+git clone https://github.com/lvl23apps/Ghosts.git
+cd Ghosts
+python main.py
+```
+
+Use [Windows Terminal](https://aka.ms/terminal) for best colour support. Set your profile to `xterm-256color` under Settings → Profiles → Advanced → Environment variables.
+
 ### From source
 
 ```bash
@@ -22,7 +53,7 @@ cd Ghosts
 python3 main.py
 ```
 
-**Requirements:** Python 3.9+, a 256-colour terminal (`TERM=xterm-256color`). No external Python packages — pure stdlib. `tmux` is optional but recommended: the Ghost scene captures your live pane content when running inside a tmux session.
+**Requirements:** Python 3.9+, a 256-colour terminal (`TERM=xterm-256color`). No external Python packages — pure stdlib (Windows requires `pip install windows-curses`). `tmux` is optional but recommended: the Ghost scene captures your live pane content when running inside a tmux session.
 
 ## Scenes
 
