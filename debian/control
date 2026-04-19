@@ -1,0 +1,23 @@
+Source: ghosts
+Section: misc
+Priority: optional
+Maintainer: lvl23apps <lvl23apps@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all
+Standards-Version: 4.6.2
+Homepage: https://github.com/lvl23apps/Ghosts
+Rules-Requires-Root: no
+
+Package: ghosts
+Architecture: all
+Depends: ${misc:Depends}, python3 (>= 3.9), python3-curses
+Recommends: tmux
+Description: Terminal scene viewer with animated effects
+ Ghosts renders 9 animated scenes in 24-bit colour mapped to xterm-256,
+ built on a notcurses-inspired plane and compositor model.
+ .
+ Scenes include: Ghost (terminal content drift with trail modes), Matrix
+ Rain, Rain Drops, Plasma, Topo Flyover, Glitch Screen, Bio Scan,
+ Computer Sim, and the interactive Shadytel Switchboard with PANIC mode.
+ .
+ Pure Python — no external dependencies beyond the standard library.
+ Runs inside tmux to capture live terminal content for the Ghost scene.

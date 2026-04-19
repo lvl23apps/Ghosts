@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""Entry point for the ghosts terminal scene viewer."""
+import sys
+import os
+
+# Support running from repo root or installed path
+_here = os.path.dirname(os.path.abspath(__file__))
+_lib  = os.path.join(_here, "..", "usr", "lib", "ghosts")
+_repo = os.path.join(_here, "..")
+
+for _path in (_repo, _lib):
+    if os.path.isfile(os.path.join(_path, "main.py")):
+        sys.path.insert(0, _path)
+        break
+
+from main import main  # noqa: E402
+main()

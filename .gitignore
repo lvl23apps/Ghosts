@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Python build
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Debian build artefacts
+debian/.debhelper/
+debian/ghosts/
+debian/files
+debian/debhelper-build-stamp
+*.deb
+*.changes
+*.buildinfo

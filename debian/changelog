@@ -1,0 +1,10 @@
+ghosts (2.0.0-1) unstable; urgency=low
+
+  * Initial release of ghosts v2.
+  * 9 animated scenes: Ghost, MatrixRain, RainDrops, Plasma, TopoFlyover,
+    GlitchScreen, BioScan, ComputerSim, Switchboard.
+  * Notcurses-inspired z-ordered plane compositor.
+  * Ghost scene captures live tmux pane content before launch.
+  * Switchboard includes interactive Shadytel exchange and PANIC crash mode.
+
+ -- lvl23apps <lvl23apps@users.noreply.github.com>  Sat, 19 Apr 2025 00:00:00 +0000

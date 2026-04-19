@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "ghosts"
+version = "2.0.0"
+description = "Terminal scene viewer — animated scenes in 24-bit colour via curses"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = []   # pure stdlib: curses, os, sys, random, subprocess, math
+
+[project.scripts]
+ghosts = "ghosts2.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ghosts2*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.md"]

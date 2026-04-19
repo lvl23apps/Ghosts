@@ -1,0 +1,5 @@
+main.py usr/lib/ghosts/
+renderer.py usr/lib/ghosts/
+scene_base.py usr/lib/ghosts/
+effects.py usr/lib/ghosts/
+scenes/ usr/lib/ghosts/
