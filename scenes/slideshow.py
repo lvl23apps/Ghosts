@@ -246,6 +246,25 @@ def _txt_to_slide(path: str, h: int, w: int):
 
 # ── Scene ─────────────────────────────────────────────────────────────────────
 
+_GLITCH_POOL = "░▒▓▄▀▌▐│─┼╬◆○●□■×÷±≈∞§@#$%&!?~^"
+
+def _glitch_name(name: str, frame: int) -> str:
+    """Return a partially corrupted version of name, flickering with frame."""
+    rng = random.Random(frame // 4)   # changes every 4 frames
+    out = []
+    for ch in name:
+        r = rng.random()
+        if ch in (".", "/", "_", "-"):
+            out.append(ch)            # punctuation always legible
+        elif r < 0.40:
+            out.append(rng.choice(_GLITCH_POOL))   # corrupted
+        elif r < 0.55:
+            out.append(ch.swapcase())              # case-flipped
+        else:
+            out.append(ch)                         # legible
+    return "".join(out)
+
+
 _HOLD_DEFAULT  = 300   # frames before starting next crossfade (~10 s at 30fps)
 _FADE_FRAMES   = 90    # crossfade duration in frames (~3 s)
 _HOLD_STEP     = 60    # hold time adjustment per keypress
@@ -452,9 +471,10 @@ class Slideshow(Scene):
         if not self._all_paths or self._all_paths[0] == "__empty__":
             label = "no images"
         else:
-            label = os.path.basename(self._all_paths[self._idx])
-            if len(label) > 28:
-                label = "…" + label[-27:]
+            raw   = os.path.basename(self._all_paths[self._idx])
+            if len(raw) > 28:
+                raw = raw[-28:]
+            label = _glitch_name(raw, self._frame)
         secs  = max(1, self._hold_frames // 30)
         phase = f"FADE {int(self._fade_t//_FADE_FRAMES*100)}%" if self._fading else f"hold {self._hold_t}/{self._hold_frames}"
         return (
