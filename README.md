@@ -14,15 +14,25 @@ sudo apt install ./ghosts.deb
 ghosts
 ```
 
-### macOS (Homebrew)
+### macOS
+
+Python 3.9+ is required. Install it via Homebrew if needed:
 
 ```bash
-brew tap lvl23apps/tap
-brew install ghosts
-ghosts
+brew install python tmux
 ```
 
-Requires Python 3.9+ and a 256-colour terminal. [iTerm2](https://iterm2.com) or the built-in Terminal app on macOS 12+ both work. `tmux` is available via `brew install tmux` and recommended for the Ghost scene.
+Then install Ghosts from source:
+
+```bash
+git clone https://github.com/lvl23apps/Ghosts.git
+cd Ghosts
+python3 main.py
+```
+
+[iTerm2](https://iterm2.com) or the built-in Terminal app on macOS 12+ both work. `tmux` is recommended for the Ghost scene.
+
+> **Note:** Do not use `brew install ghosts` — Homebrew will resolve this to [Ghostty](https://ghostty.org), a different application.
 
 ### Windows
 
