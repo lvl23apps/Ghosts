@@ -10,7 +10,7 @@ Rules-Requires-Root: no
 Package: ghosts
 Architecture: all
 Depends: ${misc:Depends}, python3 (>= 3.9), python3-curses
-Recommends: tmux
+Recommends: tmux, python3-pil
 Description: Terminal scene viewer with animated effects
  Ghosts renders 9 animated scenes in 24-bit colour mapped to xterm-256,
  built on a notcurses-inspired plane and compositor model.

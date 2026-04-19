@@ -65,6 +65,8 @@ python3 main.py
 
 **Requirements:** Python 3.9+, a 256-colour terminal (`TERM=xterm-256color`). No external Python packages — pure stdlib (Windows requires `pip install windows-curses`). `tmux` is optional but recommended: the Ghost scene captures your live pane content when running inside a tmux session.
 
+The Slideshow scene requires Pillow for image loading: `pip install Pillow` (or `apt install python3-pil`). Without it, only pre-converted `.txt` Braille art files will load. Images are read from `$GHOSTS_SLIDES`, `~/.config/ghosts/slides/`, or `~/Pictures/randoms/`.
+
 ## Scenes
 
 | Scene | Description |
@@ -78,6 +80,7 @@ python3 main.py
 | Bio Scan | Biological scan with fossil windows |
 | Computer Sim | 10 classic computer systems simulated |
 | Switchboard | Shadytel Metropolitan Exchange — interactive patch bay with PANIC mode |
+| Slideshow | Crossfades through photos rendered as Braille block art with six colour modes |
 
 ## Controls
 

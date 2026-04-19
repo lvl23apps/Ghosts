@@ -24,9 +24,9 @@ import os
 sys.path.insert(0, os.path.dirname(__file__))
 
 from renderer import CursesRenderer, Color, BLACK
-from scenes import Ghost, MatrixRain, RainDrops, Plasma, TopoFlyover, GlitchScreen, BioScan, ComputerSim, Switchboard
+from scenes import Ghost, MatrixRain, RainDrops, Plasma, TopoFlyover, GlitchScreen, BioScan, ComputerSim, Switchboard, Slideshow
 
-SCENE_CLASSES = [Ghost, MatrixRain, RainDrops, Plasma, TopoFlyover, GlitchScreen, BioScan, ComputerSim, Switchboard]
+SCENE_CLASSES = [Ghost, MatrixRain, RainDrops, Plasma, TopoFlyover, GlitchScreen, BioScan, ComputerSim, Switchboard, Slideshow]
 
 _FPS   = 30
 _FRAME = 1.0 / _FPS

@@ -13,6 +13,9 @@ dependencies = [
     "windows-curses; sys_platform == 'win32'",
 ]
 
+[project.optional-dependencies]
+slideshow = ["Pillow>=9.0"]
+
 [project.scripts]
 ghosts = "ghosts2.main:main"
 

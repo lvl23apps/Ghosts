@@ -7,5 +7,6 @@ from .glitch import GlitchScreen
 from .bioscan import BioScan
 from .computersim import ComputerSim
 from .switchboard import Switchboard
+from .slideshow import Slideshow
 
-__all__ = ["Ghost", "MatrixRain", "RainDrops", "Plasma", "TopoFlyover", "GlitchScreen", "BioScan", "ComputerSim", "Switchboard"]
+__all__ = ["Ghost", "MatrixRain", "RainDrops", "Plasma", "TopoFlyover", "GlitchScreen", "BioScan", "ComputerSim", "Switchboard", "Slideshow"]
