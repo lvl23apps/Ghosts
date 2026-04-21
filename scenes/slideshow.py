@@ -177,15 +177,23 @@ def _image_to_slide(path: str, h: int, w: int):
     """
     try:
         from PIL import Image as _Image
-        img = _Image.open(path).convert("RGB")
+        img = _Image.open(path)
 
-        # Preserve aspect ratio with letterboxing
         src_w, src_h = img.size
         tgt_w, tgt_h = w * 2, (h - 1) * 4
+
+        # For JPEGs, use draft() to decode at reduced resolution in the JPEG
+        # decoder itself — 4–8× faster than decoding then downsampling.
+        if hasattr(img, "draft"):
+            img.draft("RGB", (tgt_w * 2, tgt_h * 2))
+            src_w, src_h = img.size
+
+        img = img.convert("RGB")
+
         scale = min(tgt_w / src_w, tgt_h / src_h)
-        fit_w = int(src_w * scale)
-        fit_h = int(src_h * scale)
-        img   = img.resize((fit_w, fit_h), _Image.LANCZOS)
+        fit_w = max(1, int(src_w * scale))
+        fit_h = max(1, int(src_h * scale))
+        img   = img.resize((fit_w, fit_h), _Image.BILINEAR)
 
         # Pad to target with black
         canvas = _Image.new("RGB", (tgt_w, tgt_h), (0, 0, 0))
@@ -420,6 +428,11 @@ class Slideshow(Scene):
                 self._finish_fade()
         else:
             self._hold_t += 1
+            # Pre-load next slide 60 frames before transition so any slow
+            # image decode (large JPEGs) happens during the static hold phase.
+            if self._hold_t == max(1, self._hold_frames - 60):
+                nxt_idx = (self._idx + 1) % len(self._all_paths)
+                self._load_slide(self._all_paths[nxt_idx])
             if self._hold_t >= self._hold_frames:
                 self._start_fade(+1)
 
