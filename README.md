@@ -65,7 +65,19 @@ python3 main.py
 
 **Requirements:** Python 3.9+, a 256-colour terminal (`TERM=xterm-256color`). No external Python packages — pure stdlib (Windows requires `pip install windows-curses`). `tmux` is optional but recommended: the Ghost scene captures your live pane content when running inside a tmux session.
 
-The Slideshow scene requires Pillow for image loading: `pip install Pillow` (or `apt install python3-pil`). Without it, only pre-converted `.txt` Braille art files will load. Images are read from `$GHOSTS_SLIDES`, `~/.config/ghosts/slides/`, or `~/Pictures/randoms/`.
+The Slideshow scene requires Pillow for image loading. Without it, only pre-converted `.txt` Braille art files will load.
+
+**macOS / from source:**
+```bash
+pip install Pillow
+```
+
+**Debian / Ubuntu:**
+```bash
+apt install python3-pil
+```
+
+Images are read from `$GHOSTS_SLIDES`, `~/.config/ghosts/slides/`, or `~/Pictures/randoms/`. None of these are created automatically — create whichever suits you and add your images there.
 
 ## Scenes
 
@@ -121,30 +133,6 @@ Scene-specific controls are shown in the status bar at the bottom.
 
 See [SCENE_BUILDING.md](SCENE_BUILDING.md) for the full guide — APIs, lifecycle, examples, and step-by-step instructions for registering a new scene.
 
-## Troubleshooting
-
-### Slideshow scene shows no images
-
-The Slideshow scene requires Pillow to load image files. Install it:
-
-```bash
-pip install Pillow
-```
-
-Images are loaded from the first of these locations that exists:
-
-1. `$GHOSTS_SLIDES` environment variable
-2. `~/.config/ghosts/slides/`
-3. `~/Pictures/randoms/`
-
-None of these are created automatically. Create one and add your images:
-
-```bash
-mkdir -p ~/Pictures/randoms
-```
-
-Without Pillow, or if none of the above directories exist, the scene will only display pre-converted `.txt` Braille art files.
-
 Short version:
 
 1. Create `scenes/myscene.py` subclassing `Scene` from `scene_base.py`
@@ -170,6 +158,30 @@ scenes/
   computersim.py — classic computer sim
   switchboard.py — telephone switchboard
 ```
+
+## Troubleshooting
+
+### Slideshow scene shows no images
+
+The Slideshow scene requires Pillow to load image files. Install it:
+
+```bash
+pip install Pillow
+```
+
+Images are loaded from the first of these locations that exists:
+
+1. `$GHOSTS_SLIDES` environment variable
+2. `~/.config/ghosts/slides/`
+3. `~/Pictures/randoms/`
+
+None of these are created automatically. Create one and add your images:
+
+```bash
+mkdir -p ~/Pictures/randoms
+```
+
+Without Pillow, or if none of the above directories exist, the scene will only display pre-converted `.txt` Braille art files.
 
 ## License
 
